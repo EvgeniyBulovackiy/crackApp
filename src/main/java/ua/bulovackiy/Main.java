@@ -1,6 +1,6 @@
 package ua.bulovackiy;
 
-import ua.bulovackiy.brute.BruteForce;
+import ua.bulovackiy.brute.BruteForceWithZeros;
 
 /**
  * Main class
@@ -12,8 +12,9 @@ import ua.bulovackiy.brute.BruteForce;
 public class Main {
     public static void main(String[] args) {
 
-        for (int i = 0; i < 50; i++){
-            new Thread(new BruteForce()).start();
+        for (int i = 0; i < 100; i++){
+            new Thread(new BruteForceWithZeros()).start();
         }
+
     }
 }

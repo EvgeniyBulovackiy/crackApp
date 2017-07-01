@@ -3,7 +3,7 @@ package ua.bulovackiy.brute;
 import ua.bulovackiy.connection.TestPhp;
 
 /**
- * Class for bust values.
+ * Class for bust values without zeros.
  *
  * @author Evgeniy Bulovackiy
  * @version 2.0

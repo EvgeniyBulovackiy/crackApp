@@ -1,6 +1,6 @@
 package ua.bulovackiy;
 
-import ua.bulovackiy.process.ThreadProcess;
+import ua.bulovackiy.brute.BruteForce;
 
 /**
  * Main class
@@ -12,9 +12,8 @@ import ua.bulovackiy.process.ThreadProcess;
 public class Main {
     public static void main(String[] args) {
 
-        for(int i = 0; i < 20; i++){
-            Thread t = new Thread(new ThreadProcess());
-            t.start();
+        for (int i = 0; i < 30; i++){
+            new Thread(new BruteForce()).start();
         }
     }
 }

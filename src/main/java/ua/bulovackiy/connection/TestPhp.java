@@ -42,18 +42,20 @@ public class TestPhp {
             document = Jsoup.parse(EntityUtils.toString(response.getEntity()));
             body = document.body().text();
         } catch (IOException e) {
-            e.printStackTrace();
+            post(value);
         }
 
-        if (statusCode == 200) {
-            if (body.equals("WRONG =(")){
-                System.out.println(body + " with " + value);
-            } else {
-                System.out.println(body);
-                System.exit(0);
-            }
-        } else {
-            post(value);
+        switch (statusCode) {
+            case 200:
+                if (body.equals("WRONG =(")) {
+                    System.out.println(body + " with " + value);
+                } else {
+                    System.out.println(body);
+                    System.exit(0);
+                }
+                break;
+            default:
+                post(value);
         }
     }
 }

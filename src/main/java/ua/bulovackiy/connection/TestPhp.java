@@ -31,17 +31,29 @@ public class TestPhp {
     private HttpResponse response;
     private Document document;
     private String body;
+    private int statusCode;
 
-    public String post(String value) {
+    public void post(String value) {
         try {
             pairs.add(new BasicNameValuePair("code", value));
             post.setEntity(new UrlEncodedFormEntity(pairs));
             response = client.execute(post);
+            statusCode = response.getStatusLine().getStatusCode();
             document = Jsoup.parse(EntityUtils.toString(response.getEntity()));
             body = document.body().text();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return body;
+
+        if (statusCode == 200) {
+            if (body.equals("WRONG =(")){
+                System.out.println(body + " with " + value);
+            } else {
+                System.out.println(body);
+                System.exit(0);
+            }
+        } else {
+            post(value);
+        }
     }
 }
